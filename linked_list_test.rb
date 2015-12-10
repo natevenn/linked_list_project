@@ -74,12 +74,12 @@ class List_Test < Minitest::Test
     list = List.new("beep")
     list.prepend("bop")
     list.append("tee")
+    binding.pry
 
-
-    assert_equal "tee", list.pop
+    assert_equal "beep tee", list.pop(2)
     assert_equal 2, list.count
   end
-  
+
   def test_can_pop_last_node_from_list_if_node_is_head
     # skip
     list = List.new("beep")

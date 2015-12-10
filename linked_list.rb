@@ -3,7 +3,7 @@ require 'pry'
 
 class List
 
-  attr_reader :head
+  attr_accessor :head
 
   def initialize(data = nil)
     @head = Node.new(data)
@@ -37,12 +37,15 @@ class List
       count
   end
 
-  def pop(num = nil)
+  def pop(repeats = nil)
+    new_list = []
     if @head.next_node == nil
       popped = @head.data
       @head = nil
       popped
     else
+      binding.pry
+    repeats.times do |i|
     current_node = @head
     until current_node.next_node.next_node == nil
       current_node = current_node.next_node
@@ -50,6 +53,8 @@ class List
     end
       current_node.next_node = nil
       popped
+      new_list << popped
+    end
     end
   end
 
